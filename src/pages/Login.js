@@ -6,17 +6,22 @@ import { useForm } from "react-hook-form";
 const Login = function () {
 	const { register, handleSubmit } = useForm();
 
-	// http://localhost:3000
-
-	const SubmitFunction = function (FormData) {
+	const SubmitFunc = function (FormData) {
 		console.log(FormData);
-		// FormData = await fetch("http://localhost:4000/api/login");
+
+		const option = {
+			body: FormData,
+			method: "post",
+		};
+		fetch("http://localhost:4000/api/login", option).then((res) => {
+			console.log(res.json());
+		});
 	};
 	// const onSubmit = (data) => console.log(data);
 
 	return (
 		<div className="container">
-			<form onSubmit={handleSubmit(SubmitFunction)}>
+			<form onSubmit={handleSubmit(SubmitFunc)}>
 				<input
 					className="text-light"
 					{...register("email", {
@@ -31,7 +36,7 @@ const Login = function () {
 				<input
 					className="text-light"
 					type="password"
-					{...register("age", {
+					{...register("password", {
 						min: {
 							value: 6,
 							message: "minimum is 6",

@@ -6,13 +6,18 @@ import { useForm } from "react-hook-form";
 const Register = function () {
 	const { register, handleSubmit } = useForm();
 
-	// http://localhost:3000
-
 	const SubmitFunction = function (FormData) {
-		// const postData = await fetch("http://localhost:4000/api/login");
 		console.log(FormData);
+
+		const option = {
+			body: FormData,
+			method: "post",
+		};
+
+		fetch("http://localhost:4000/api/register", option).then((res) => {
+			console.log(res.json());
+		});
 	};
-	// const onSubmit = (data) => console.log(data);
 
 	return (
 		<>
@@ -33,7 +38,6 @@ const Register = function () {
 						})}
 					/>
 
-					{/* <p className="text-light danger "> {error && error.Email}</p> */}
 					<input
 						className="text-light"
 						type="password"
