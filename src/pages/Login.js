@@ -3,24 +3,23 @@ import { Link } from "react-router-dom";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-export default function Login() {
-	const {
-		register,
-		handleSubmit,
-		formState: { error },
-	} = useForm();
-	const onSubmit = (data) => console.log(data);
+const Login = function () {
+	const { register, handleSubmit } = useForm();
+
+	// http://localhost:3000
+
+	const SubmitFunction = function (FormData) {
+		console.log(FormData);
+		// FormData = await fetch("http://localhost:4000/api/login");
+	};
+	// const onSubmit = (data) => console.log(data);
 
 	return (
-		<div className="">
-			<form onSubmit={handleSubmit(onSubmit)}>
+		<div className="container">
+			<form onSubmit={handleSubmit(SubmitFunction)}>
 				<input
 					className="text-light"
-					{...register("Name", { required: "name is required " })}
-				/>
-				<input
-					className="text-light"
-					{...register("Email", {
+					{...register("email", {
 						required: "email is required",
 						minLength: {
 							value: 5,
@@ -28,6 +27,7 @@ export default function Login() {
 						},
 					})}
 				/>
+				{/* <p className="text-light danger "> {error.Email}</p> */}
 				<input
 					className="text-light"
 					type="password"
@@ -48,4 +48,6 @@ export default function Login() {
 			</form>
 		</div>
 	);
-}
+};
+
+export default Login;

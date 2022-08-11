@@ -1,5 +1,5 @@
-// import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import React from "react";
+import { Outlet, Navigate } from "react-router-dom";
 
 const PrivateRoutes = function () {
 	let usertoken = new Headers().get("usertoken");

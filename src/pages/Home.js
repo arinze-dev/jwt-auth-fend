@@ -1,12 +1,12 @@
 // import { Navbar } from "react-bootstrap";
 import "../App.css";
 
-const About = function () {
+const Home = function () {
 	return (
 		<>
-			<div> welcome to About page</div>
+			<div> welcome to home page</div>
 		</>
 	);
 };
 
-export default About;
+export default Home;
