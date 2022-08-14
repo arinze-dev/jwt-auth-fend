@@ -7,16 +7,20 @@ const Register = function () {
 	const { register, handleSubmit } = useForm();
 
 	const SubmitFunction = function (FormData) {
-		console.log(FormData);
+		
+	   console.log(FormData);
+		// const option = {
+		// 	body: FormData,
+		// 	method: "POST",
+		// };
 
-		const option = {
-			body: FormData,
-			method: "post",
-		};
-
-		fetch("http://localhost:4000/api/register", option).then((res) => {
-			console.log(res.json());
-		});
+		fetch("http://localhost:4040/api/register",{
+			method: 'POST', // or 'PUT'
+			headers: {
+			  'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(FormData),
+		  }).then(res=> console.log("frontend",res));
 	};
 
 	return (
@@ -40,7 +44,7 @@ const Register = function () {
 
 					<input
 						className="text-light"
-						type="password"
+				       type="password"
 						{...register("password", {
 							min: {
 								value: 6,

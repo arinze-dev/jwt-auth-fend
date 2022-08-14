@@ -9,16 +9,12 @@ const Login = function () {
 	const SubmitFunc = function (FormData) {
 		console.log(FormData);
 
-		const option = {
-			body: FormData,
-			method: "post",
-		};
-		fetch("http://localhost:4000/api/login", option).then((res) => {
-			console.log(res.json());
-		});
+		fetch("http://localhost:4040/api/login",{method:'POST',	headers: {
+			'Content-Type': 'application/json',
+		  },
+		  body: JSON.stringify(FormData),} ).then(resp => console.log(resp)).then(data=> console.log(data))
 	};
-	// const onSubmit = (data) => console.log(data);
-
+	
 	return (
 		<div className="container">
 			<form onSubmit={handleSubmit(SubmitFunc)}>
