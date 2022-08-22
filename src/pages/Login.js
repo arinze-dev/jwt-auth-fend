@@ -7,19 +7,30 @@ const Login = function () {
 	const { register, handleSubmit } = useForm();
 
 	const SubmitFunc = function (FormData) {
-		console.log(FormData);
+			
+		
+       fetch("http://localhost:4040/api/login",{method:'POST',
+          headers: {'Content-Type': 'application/json',},
+		  body: JSON.stringify(FormData),} ).then(res =>{ 
+          return res.json()
+      }).then( data=>{
+	   if (data.status === 200) {
+		    sessionStorage.setItem("userInfo",JSON.stringify(data))
+		    window.location.href = "/"
+	   } 
+	   console.log(data);
+	   return data
+	}).catch(err=> console.log(err))
+}
 
-		fetch("http://localhost:4040/api/login",{method:'POST',	headers: {
-			'Content-Type': 'application/json',
-		  },
-		  body: JSON.stringify(FormData),} ).then(resp => console.log(resp)).then(data=> console.log(data))
-	};
-	
+    
+
 	return (
 		<div className="container">
 			<form onSubmit={handleSubmit(SubmitFunc)}>
 				<input
 					className="text-light"
+					placeholder="Email"
 					{...register("email", {
 						required: "email is required",
 						minLength: {
@@ -28,9 +39,10 @@ const Login = function () {
 						},
 					})}
 				/>
-				{/* <p className="text-light danger "> {error.Email}</p> */}
+				<p className="errorMessage" ></p>
 				<input
 					className="text-light"
+					placeholder="Password"
 					type="password"
 					{...register("password", {
 						min: {
@@ -40,6 +52,7 @@ const Login = function () {
 						max: 99,
 					})}
 				/>
+				<p className="errorMessage" ></p>
 				<input className="text-light" type="submit" />
 				<br />
 				<br />

@@ -4,7 +4,7 @@ import "../App.css";
 const About = function () {
 	return (
 		<>
-			<div> welcome to About page</div>
+			<div className="pagestyle"> welcome to About page</div>
 		</>
 	);
 };

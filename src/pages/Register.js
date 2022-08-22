@@ -15,24 +15,32 @@ const Register = function () {
 		// };
 
 		fetch("http://localhost:4040/api/register",{
-			method: 'POST', // or 'PUT'
-			headers: {
-			  'Content-Type': 'application/json',
-			},
+			method: 'POST', headers: {
+			'Content-Type': 'application/json',},
 			body: JSON.stringify(FormData),
-		  }).then(res=> console.log("frontend",res));
-	};
+		  }).then(res=> res.json()).then(data =>{
+			 console.log(data);
+			 
+		if (data.status == 200) {
+			 return window.location.href = "/login"
+			}
+		   return data
+		}
+		)};
+    
 
 	return (
 		<>
-			<div className="content">
+			<div className="container">
 				<form onSubmit={handleSubmit(SubmitFunction)}>
 					<input
+					    placeholder="UserName"
 						className="text-light"
 						{...register("name", { required: "name is required " })}
 					/>
 					<input
 						className="text-light"
+						 placeholder="Email"
 						{...register("email", {
 							required: "email is required",
 							minLength: {
@@ -44,6 +52,7 @@ const Register = function () {
 
 					<input
 						className="text-light"
+						placeholder="Password"
 				       type="password"
 						{...register("password", {
 							min: {
