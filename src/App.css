@@ -6,8 +6,7 @@ body {
 }
 
 nav {
-	background-color: rgb(100, 190, 190);
-	color: black;
+	background-color: #24253C ;
 	height: 90px;
 	padding: 0 80px;
 	display: flex;
@@ -27,33 +26,48 @@ nav ul {
 }
 
 nav .nav-link {
-	color: black;
+	color: rgb(255, 255, 255);
 	font-size: 1.2rem;
 }
 .container{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: aquamarine;
+	background-image: linear-gradient(#5c5e83 ,#24253C,#171a4d );
 	height: 86vh;
 }
 form{
+	color: white;
 	padding-top: 20px;
-	height: 20rem;
+	min-height: 20rem;
     /* background-color: rgb(32, 31, 31); */
-	background-color: rgb(100, 190, 190);
+	background-color:#24253C;
 	text-align: center;
 	width: 400px;
 	border-radius: 5px;
 
 }
+/* 24253C */
+/* E43E57 */
+/* E43E57 */
+.error{
+	color: red;
+	display: inline-block;
+	margin: 0;
+
+}
 form input{
 	display: block;
-	margin-bottom: 20px;
-	padding: 5px 3px;
+	padding: 10px 4px;
+	color: whitesmoke;
+	border: 2px solid #E43E57;
+	background-color: #24253C;
+	border-radius: 6px;
+	outline: none;
 	width: 90%;
+	font-size: 20px;
 	margin: 10px auto;
-	margin-bottom: 30px;
+	margin-bottom: 12px;
 	
 }
 
