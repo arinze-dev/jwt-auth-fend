@@ -6,7 +6,7 @@ import {  getUserInfo} from "../auth/index";
  
 const Home = function () {
   const token = getUserInfo().token
-	 const [Data,setData] = useState()
+	 const [Data,setData] = useState(null)
   
 useEffect(()=>{
 	fetch("http://localhost:4040/api/home/",{method:'GET',
@@ -16,7 +16,8 @@ useEffect(()=>{
    console.log(Data);
 	return (
 		<>
-		{/* <p>{Data?.message}</p> */}
+		<p style={{color:"black"}}>{Data?.message}</p>
+		<h3 style={{color:"black"}}>{Data?.header}</h3>
 			<div className="pagestyle"> welcome to home page</div>
 		</>
 	);

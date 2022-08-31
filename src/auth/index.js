@@ -1,5 +1,3 @@
-
-
 export const getUserInfo = ()=>{
     let userInfo = null
          if (sessionStorage.getItem("userInfo")) {
